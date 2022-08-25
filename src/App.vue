@@ -1,14 +1,32 @@
 <template>
   <div id="app">
-    <el-button>moren anniu </el-button>
-    <img src="./assets/logo.png">
-    <router-view/>
+    <el-button @click="login">登录</el-button>
+    <div>用户名: {{username}}</div>
   </div>
 </template>
 
 <script>
+import auth from '@/api/auth.js'
+import blog from '@/api/blog'
+window.auth = auth
+window.blog = blog
+
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      username: ''
+    }
+  },
+  methods: {
+    login() {
+      auth.login({ username: 'hunger', password: '123456' })
+        .then(res => {
+          console.log(res)
+          this.username = res.data.username
+        })
+    }
+  }
 }
 </script>
 
