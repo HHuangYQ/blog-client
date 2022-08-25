@@ -1,32 +1,18 @@
 <template>
   <div id="app">
-    <el-button @click="login">登录</el-button>
-    <div>用户名: {{username}}</div>
+    <Header id="header"></Header>
+    <main id="main">
+       <router-view />
+    </main>
+   <Footer id="footer"></Footer>
   </div>
 </template>
 
 <script>
-import auth from '@/api/auth.js'
-import blog from '@/api/blog'
-window.auth = auth
-window.blog = blog
-
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 export default {
-  name: 'App',
-  data() {
-    return {
-      username: ''
-    }
-  },
-  methods: {
-    login() {
-      auth.login({ username: 'hunger', password: '123456' })
-        .then(res => {
-          console.log(res)
-          this.username = res.data.username
-        })
-    }
-  }
+    components: { Header, Footer }
 }
 </script>
 
