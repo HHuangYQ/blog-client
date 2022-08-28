@@ -1,30 +1,26 @@
 <template>
   <div id="index">
-   <section class="blog-posts">
-    <div class="item">
-      <figure class="avatar">
-        <img src="../../assets/ avatar.png" alt="">
-        <figcaption>某某某</figcaption>
-      </figure>
-      <h3>前端异步大揭秘<span> 3天前 </span></h3>
-      <p>本文以一个简单的文件读写为例，本文以一个简单的文件读写为例，本文以一个简单的文件读写为例，本文以一个简单的文件读写为例，本文以一个简单的文件读写为例，本文以一个简单的文件读写为例，</p>
-    </div>
-    <div class="item">
-      <figure class="avatar">
-        <img src="../../assets/ avatar.png" alt="">
-        <figcaption>某某某</figcaption>
-      </figure>
-      <h3>前端异步大揭秘 <span> 3天前</span></h3>
-      <p>本文以一个本文以一个简单的文件读写为例，本文以一个简单的文件读写为例，本文以一个简单的文件读写为例，简单的文件读写为例，</p>
-    </div>
-   </section>
+    <section class="blog-posts">
+      <router-link class="item" v-for="blog in blogs" :key="blog.id" :to="`/detail/${blog.id}`">
+        <figure class="avatar">
+          <img :src="blog.user.avatar" :alt="blog.user.username">
+          <figcaption>{{blog.user.username}}</figcaption> 
+        </figure>
+        <h3>{{blog.title}}<span> {{friendlyDate(blog.createdAt)}}</span></h3> 
+        <p>{{blog.description}}</p>
+      </router-link>
+    </section>
+    <section class="pagination">
+      <el-pagination
+        layout="prev, pager, next"
+        :total="total"
+        :current-page="page"
+        @current-change="onPageChange">
+      </el-pagination>
+    </section>
   </div>
 </template>
 
-<script src="./template.js">
+<script src="./template.js"></script>
 
-</script>
-
-<style scoped lang="less" src="./template.less">
-
-</style>
+<style scoped lang="less" src="./template.less"></style>

@@ -1,59 +1,63 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import Router from 'vue-router'
 /*
-import Login from "@/pages/Login/template.vue";
-import Index from "@/pages/Index/template.vue";
-import Create from "@/pages/Create/template.vue";
-import Edit from "@/pages/Edit/template.vue";
-import Detail from "@/pages/Detail/template.vue";
-import My from "@/pages/My/template.vue";
-import Register from "@/pages/Register/template.vue";
-import User from "@/pages/User/template.vue";
+import Index from '@/pages/Index/template.vue'
+import Login from '@/pages/Login/template.vue'
+import Detail from '@/pages/Detail/template.vue'
+import Edit from '@/pages/Edit/template.vue'
+import Create from '@/pages/Create/template.vue'
+import Register from '@/pages/Register/template.vue'
+import User from '@/pages/User/template.vue'
+import My from '@/pages/My/template.vue'
 */
-import store from "../store";
 
-Vue.use(Router);
+import store from '../store'
+window.store = store
 
-/*const router = new Router({
+Vue.use(Router)
+
+/*
+const router = new Router({
   routes: [
     {
-      path: "/",
+      path: '/',
       component: Index
     },
     {
-      path: "/login",
+      path: '/login',
       component: Login
     },
     {
-      path: "/create",
-      component: Create,
-      meta: { requireAuth: true }
+      path: '/register',
+      component: Register
     },
     {
-      path: "/detail/:blogId",
+      path: '/detail/:blogId',
       component: Detail
     },
     {
-      path: "/edit/:blogId",
+      path: '/edit/:blogId',
       component: Edit,
-      meta: { requireAuth: true }
+      meta: { requiresAuth: true }
     },
     {
-      path: "/user/:userId",
+      path: '/create',
+      component: Create,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/user/:userId',
       component: User
     },
     {
-      path: "/my",
+      path: '/my',
       component: My,
-      meta: { requireAuth: true }
-    },
-    {
-      path: "/register",
-      component: Register
+      meta: { requiresAuth: true }
     }
   ]
-});
+})
 */
+
 const router =  new Router({
   routes: [
     {
@@ -111,4 +115,5 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-export default router;
+export default router
+

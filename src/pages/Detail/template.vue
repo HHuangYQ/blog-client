@@ -1,17 +1,14 @@
 <template>
   <div id="detail">
-   <section class="user-info">
-    <img src="../../assets/ avatar.png" alt="">
-    <h3>前端异步大揭秘</h3>
-    <p><router-link to="/user">某某某</router-link>发布于3天前</p>
-   </section>
+    <section class="user-info">
+      <img :src="user.avatar" :alt="user.username" :title="user.username" class="avatar">
+      <h3>{{title}}</h3>
+      <p><router-link :to="`/user/${user.id}`">{{user.username}}</router-link> 发布于{{friendlyDate(createdAt)}}</p>
+    </section>
+    <section class="article" v-html="markdown"></section>
   </div>
 </template>
 
-<script src="./template.js">
+<script src="./template.js"></script>
 
-</script>
-
-<style scoped lang="less" src="./template.less">
-
-</style>
+<style src="./template.less" lang="less"></style>
